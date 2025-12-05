@@ -33,6 +33,21 @@
   <button>Schedule a Tour</button>
 </div>
 
+<!-- Hidden Schedule Form -->
+<div id="tour-form-container" style="display:none; text-align:center; margin-top:20px;">
+  <h3>Schedule a Tour</h3>
+  <form id="tour-form">
+    <label for="tour-date">Select Date:</label><br>
+    <input type="date" id="tour-date" name="tour-date" required><br><br>
+    
+    <label for="tour-time">Select Time:</label><br>
+    <input type="time" id="tour-time" name="tour-time" required><br><br>
+    
+    <button type="submit">Submit Request</button>
+  </form>
+  <p id="tour-confirmation" style="color:green; display:none;">Thank you! Your tour request has been submitted.</p>
+</div>
+
 <div class="container">
 
   <section id="about">
@@ -63,7 +78,7 @@
     <h2>Our Space & Activities</h2>
     <p>See our classrooms, playground, and happy moments:</p>
 
-    <!-- Sample gallery images (you can replace these with your real ones) -->
+    <!-- Gallery images -->
     <img src="img1.jpg" alt="Children playing">
     <img src="img2.jpg" alt="Classroom">
     <img src="img3.jpg" alt="Outdoor activities">
@@ -105,6 +120,4 @@
 
 </body>
 </html>
-
-
 
