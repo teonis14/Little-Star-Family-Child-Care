@@ -1,3 +1,7 @@
+// ===========================
+// Schedule a Tour Modal
+// ===========================
+
 // Modal Elements
 const openBtn = document.getElementById("open-tour-btn");
 const modal = document.getElementById("tour-modal");
@@ -10,14 +14,14 @@ openBtn.addEventListener("click", () => {
   modal.style.display = "flex";
 });
 
-// Close modal
+// Close modal when clicking the close button
 closeBtn.addEventListener("click", () => {
   modal.style.display = "none";
   tourForm.style.display = "block";
   tourConfirmation.style.display = "none";
 });
 
-// Close when clicking outside content
+// Close modal when clicking outside the modal content
 window.addEventListener("click", (e) => {
   if (e.target === modal) {
     modal.style.display = "none";
@@ -26,14 +30,16 @@ window.addEventListener("click", (e) => {
   }
 });
 
-// Submit form
+// Handle form submission
 tourForm.addEventListener("submit", (e) => {
-  e.preventDefault();
+  e.preventDefault(); // Prevent page reload
   tourForm.style.display = "none";
   tourConfirmation.style.display = "block";
 });
 
-// Smooth scroll
+// ===========================
+// Smooth Scroll for Nav Links
+// ===========================
 document.querySelectorAll("nav ul li a").forEach(link => {
   link.addEventListener("click", e => {
     e.preventDefault();
@@ -42,3 +48,21 @@ document.querySelectorAll("nav ul li a").forEach(link => {
   });
 });
 
+// ===========================
+// Mobile Menu Toggle (Optional)
+// ===========================
+const menuBtn = document.querySelector(".menu-btn");
+const nav = document.querySelector("nav ul");
+
+menuBtn.addEventListener("click", () => {
+  nav.classList.toggle("show");
+});
+
+/* 
+To make the mobile menu show, add this to your CSS:
+
+.show {
+  display: flex !important;
+  flex-direction: column;
+}
+*/
