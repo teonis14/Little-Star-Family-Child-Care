@@ -1,18 +1,36 @@
 // ===========================
-// Schedule a Tour Form
+// Schedule a Tour Modal
 // ===========================
-const tourButton = document.querySelector(".hero button");
-const tourFormContainer = document.getElementById("tour-form-container");
+const openBtn = document.getElementById("open-tour-btn");
+const modal = document.getElementById("tour-modal");
+const closeBtn = document.querySelector("#tour-modal .close");
 const tourForm = document.getElementById("tour-form");
 const tourConfirmation = document.getElementById("tour-confirmation");
 
-tourButton.addEventListener("click", () => {
-  tourFormContainer.style.display = "block";
-  tourForm.scrollIntoView({ behavior: "smooth" });
+// Open the modal
+openBtn.addEventListener("click", () => {
+  modal.style.display = "flex";
 });
 
+// Close modal when clicking the close button
+closeBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+  tourForm.style.display = "block";
+  tourConfirmation.style.display = "none";
+});
+
+// Close modal when clicking outside the modal content
+window.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+    tourForm.style.display = "block";
+    tourConfirmation.style.display = "none";
+  }
+});
+
+// Handle form submission
 tourForm.addEventListener("submit", (e) => {
-  e.preventDefault(); // Prevent actual form submission
+  e.preventDefault(); // Prevent page reload
   tourForm.style.display = "none";
   tourConfirmation.style.display = "block";
 });
@@ -41,7 +59,9 @@ menuBtn.addEventListener("click", () => {
   nav.classList.toggle("show");
 });
 
-/* You can add this to your CSS for mobile menu:
+/* 
+To make the mobile menu show, add this to your CSS:
+
 .show {
   display: flex !important;
   flex-direction: column;
