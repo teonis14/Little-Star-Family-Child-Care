@@ -38,7 +38,7 @@ header p {
   font-style: italic;
 }
 
-/* Mobile menu button */
+/* Mobile menu button (IMPROVED: Added color for visibility) */
 .menu-btn {
   display: none;
   font-size: 2.2rem;
@@ -48,6 +48,7 @@ header p {
   top: 25px;
   left: 20px;
   user-select: none;
+  color: white; /* Added for visibility against the orange background */
 }
 
 /* Navigation bar */
@@ -167,6 +168,13 @@ section h2 {
   border-radius: 15px;
   margin-bottom: 20px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* NEW: Style for sub-headings within programs */
+.programs .program h3 {
+  color: #ff9966; /* A warm, slightly darker shade */
+  font-size: 1.5em;
+  margin-bottom: 10px;
 }
 
 /* ⭐ FIXED GALLERY — clean, small, centered grid */
