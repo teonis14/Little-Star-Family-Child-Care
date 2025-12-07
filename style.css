@@ -112,7 +112,6 @@ nav ul li a:hover {
   text-align: center;
   margin: 20px 0;
   border-radius: 20px;
-  position: relative;
 }
 
 .hero h2 {
@@ -169,7 +168,11 @@ section h2 {
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-/* ⭐ UPDATED GALLERY (smaller images + grid layout) */
+/* ⭐ FIXED GALLERY — clean, small, centered grid */
+.gallery p {
+  margin-bottom: 15px;
+}
+
 .gallery {
   display: flex;
   flex-wrap: wrap;
@@ -178,7 +181,7 @@ section h2 {
 }
 
 .gallery img {
-  width: 250px;     /* Adjust size here */
+  width: 250px; /* Adjust image size here */
   height: auto;
   border-radius: 12px;
   cursor: pointer;
@@ -286,7 +289,7 @@ footer p {
   height: 20px;
   background: yellow;
   clip-path: polygon(
-    50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 
+    50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%,
     50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%
   );
   animation: floatStar 3s infinite ease-in-out;
