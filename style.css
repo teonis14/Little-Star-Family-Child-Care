@@ -169,16 +169,19 @@ section h2 {
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-/* Gallery */
-.gallery p {
-  margin-bottom: 15px;
+/* ⭐ UPDATED GALLERY (smaller images + grid layout) */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
 }
 
 .gallery img {
-  max-width: 100%;
-  margin-bottom: 12px;
-  cursor: pointer;
+  width: 250px;     /* Adjust size here */
+  height: auto;
   border-radius: 12px;
+  cursor: pointer;
   transition: transform 0.3s ease;
 }
 
