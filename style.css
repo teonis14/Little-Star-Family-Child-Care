@@ -190,7 +190,7 @@ section h2 {
 }
 
 .gallery img {
-  width: 250px; /* Adjust image size here */
+  width: 100px; /* Adjust image size here */
   height: auto;
   border-radius: 12px;
   cursor: pointer;
