@@ -38,7 +38,7 @@ header p {
   font-style: italic;
 }
 
-/* Mobile menu button (IMPROVED: Added color for visibility) */
+/* Mobile menu button */
 .menu-btn {
   display: none;
   font-size: 2.2rem;
@@ -48,7 +48,7 @@ header p {
   top: 25px;
   left: 20px;
   user-select: none;
-  color: white; /* Added for visibility against the orange background */
+  color: white; 
 }
 
 /* Navigation bar */
@@ -170,14 +170,14 @@ section h2 {
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-/* NEW: Style for sub-headings within programs */
+/* Style for sub-headings within programs */
 .programs .program h3 {
-  color: #ff9966; /* A warm, slightly darker shade */
+  color: #ff9966;
   font-size: 1.5em;
   margin-bottom: 10px;
 }
 
-/* ⭐ FIXED GALLERY — clean, small, centered grid */
+/* ⭐ GALLERY — clean, small, centered grid */
 .gallery p {
   margin-bottom: 15px;
 }
@@ -190,7 +190,7 @@ section h2 {
 }
 
 .gallery img {
-  width: 100px; /* Adjust image size here */
+  width: 100px; /* Thumbnail size */
   height: auto;
   border-radius: 12px;
   cursor: pointer;
@@ -264,7 +264,7 @@ footer p {
   font-size: 0.95em;
 }
 
-/* Lightbox styles */
+/* Lightbox styles (used by the JavaScript) */
 .lightbox {
   position: fixed;
   top: 0;
@@ -283,6 +283,7 @@ footer p {
   max-height: 90%;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  cursor: pointer; /* Makes it clear you can click the image to close */
 }
 
 /* Fun floating stars (optional animation) */
