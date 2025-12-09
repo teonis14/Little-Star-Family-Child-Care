@@ -1,32 +1,30 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     // ===========================
-    // Schedule a Tour Modal Logic
+    // 1. Schedule a Tour Modal Logic
     // ===========================
 
-    // Modal Elements
     const openBtn = document.getElementById("open-tour-btn");
     const modal = document.getElementById("tour-modal");
-    // Use querySelector for elements that might not be at the root
     const closeBtn = document.querySelector("#tour-modal-content .close"); 
     const tourForm = document.getElementById("tour-form");
     const tourConfirmation = document.getElementById("tour-confirmation");
+
+    // Function to reset and close the modal
+    function closeModalAndReset() {
+        if (modal) modal.style.display = "none";
+        // Reset state
+        if (tourForm) tourForm.style.display = "block";
+        if (tourConfirmation) tourConfirmation.style.display = "none";
+        // Reset form fields
+        if (tourForm) tourForm.reset(); 
+    }
 
     // Open modal
     if (openBtn && modal) {
         openBtn.addEventListener("click", () => {
             modal.style.display = "flex";
         });
-    }
-
-    // Function to reset and close the modal
-    function closeModalAndReset() {
-        modal.style.display = "none";
-        // Reset state
-        tourForm.style.display = "block";
-        tourConfirmation.style.display = "none";
-        // Reset form fields
-        tourForm.reset(); 
     }
 
     // Close modal when clicking the close button
@@ -46,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Handle form submission
     if (tourForm && tourConfirmation) {
         tourForm.addEventListener("submit", (e) => {
-            e.preventDefault(); // Prevent page reload
+            e.preventDefault(); 
             tourForm.style.display = "none";
             tourConfirmation.style.display = "block";
 
@@ -57,34 +55,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     // ===========================
-    // Mobile Menu Toggle (CORRECTED to use .open class)
+    // 2. Mobile Menu Toggle 
     // ===========================
     const menuBtn = document.querySelector(".menu-btn");
-    const navUl = document.querySelector("nav ul"); // Target the ul element for class toggle
+    const navUl = document.querySelector("nav ul");
 
     if (menuBtn && navUl) {
         menuBtn.addEventListener("click", () => {
-            // Toggles the 'open' class used by your CSS media query
             navUl.classList.toggle("open");
         });
     }
 
 
     // ===========================
-    // Smooth Scroll for Nav Links
+    // 3. Smooth Scroll for Nav Links
     // ===========================
     document.querySelectorAll("nav ul li a").forEach(link => {
         link.addEventListener("click", e => {
-            // Check if the link has a hash and is not a lightbox trigger (if one were used)
             const href = link.getAttribute("href");
             if (href.startsWith("#")) {
                 e.preventDefault();
                 const target = document.getElementById(href.slice(1));
                 if (target) {
                     target.scrollIntoView({ behavior: "smooth" });
-                    // Optional: Close mobile menu after clicking a link
-                    if (navUl.classList.contains("open")) {
-                         navUl.classList.remove("open");
+                    // Close mobile menu after clicking a link
+                    if (navUl && navUl.classList.contains("open")) {
+                        navUl.classList.remove("open");
                     }
                 }
             }
@@ -93,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     // ===========================
-    // Image Gallery Lightbox (REQUIRED for the .lightbox CSS)
+    // 4. Image Gallery Lightbox 🖼️
     // ===========================
     const galleryImgs = document.querySelectorAll(".gallery img");
 
@@ -106,12 +102,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
         galleryImgs.forEach(img => {
             img.addEventListener('click', () => {
-                // Remove previous content
+                // Get the path for the large image from the data attribute
+                const largeSrc = img.getAttribute('data-large-src');
+                const finalSrc = largeSrc || img.src; // Fallback to thumbnail src if large isn't defined
+
+                // Clear previous content
                 lightbox.innerHTML = ''; 
 
-                // Create a clone of the clicked image
+                // Create and append the large image element
                 const clonedImg = document.createElement('img');
-                clonedImg.src = img.src;
+                clonedImg.src = finalSrc; 
                 clonedImg.alt = img.alt;
                 
                 lightbox.appendChild(clonedImg);
@@ -119,9 +119,16 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // Close lightbox when clicking anywhere on the overlay
+        // Close lightbox when clicking anywhere on the overlay OR the image itself
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox || e.target.tagName === 'IMG') {
+                lightbox.style.display = 'none';
+            }
+        });
+        
+        // Close lightbox on ESC key press
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.style.display === 'flex') {
                 lightbox.style.display = 'none';
             }
         });
